@@ -1,6 +1,7 @@
 package com.jpfeng.adv;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,16 @@ public class ListAdapter extends RecyclerView.Adapter {
 
     private final static int TYPE_PARALLAX = 1;
     private final static int TYPE_RIPPLE = 2;
+
+    private static Drawable mParallax;
+    private static Drawable mRippleTop;
+    private static Drawable mRippleBottom;
+
+    ListAdapter(Context context) {
+        mParallax = context.getDrawable(R.drawable.img_parallax);
+        mRippleTop = context.getDrawable(R.drawable.ripple_top);
+        mRippleBottom = context.getDrawable(R.drawable.ripple_bottom);
+    }
 
     @NonNull
     @Override
@@ -48,10 +59,10 @@ public class ListAdapter extends RecyclerView.Adapter {
                     String.format(Locale.getDefault(), "如何评价XXX…##%d##？", position));
 
         } else if (holder instanceof ParallaxItemHolder) {
-            ((ParallaxItemHolder) holder).pvParallax.setImageResource(R.drawable.img_parallax);
+            ((ParallaxItemHolder) holder).pvParallax.setImageDrawable(mParallax);
 
         } else if (holder instanceof RippleItemHolder) {
-            ((RippleItemHolder) holder).rvRipple.setDrawables(R.drawable.ripple_top, R.drawable.ripple_bottom);
+            ((RippleItemHolder) holder).rvRipple.setDrawables(mRippleTop, mRippleBottom);
         }
     }
 

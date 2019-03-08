@@ -33,7 +33,7 @@ public class RippleView extends View {
     private PorterDuffXfermode MODE_XOR;
 
     public RippleView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public RippleView(Context context, @Nullable AttributeSet attrs) {

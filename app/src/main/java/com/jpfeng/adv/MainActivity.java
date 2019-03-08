@@ -67,6 +67,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        list.setAdapter(new ListAdapter());
+        list.setAdapter(new ListAdapter(this));
     }
 }
